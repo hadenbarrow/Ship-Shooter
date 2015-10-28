@@ -23,7 +23,6 @@ import managers.EnemyManager;
 import managers.IntroManager;
 import managers.PowerUpManager;
 import save.SaveScore;
-import ui.UiHandler;
 
 public class BattleState extends BasicGameState implements KeyListener {
 	
@@ -45,7 +44,6 @@ public class BattleState extends BasicGameState implements KeyListener {
 	private Image backGround;
 	private Image topBackGround;
 	private Image life;
-	private Image soundButton;
 	
 	private Music music;
 	
@@ -54,7 +52,6 @@ public class BattleState extends BasicGameState implements KeyListener {
 	
 	private SaveScore scoreSaver;
 	
-	private UiHandler uiHandler;
 	
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -62,7 +59,6 @@ public class BattleState extends BasicGameState implements KeyListener {
 		backGround = new Image("res/Background/starBackground.png");
 		topBackGround = backGround;
 		life = new Image("res/life.png");
-		soundButton = new Image("res/ui/soundButton.png");
 		isPaused = false;
 		gameOver = false;
 		isIntro = true;
@@ -85,8 +81,6 @@ public class BattleState extends BasicGameState implements KeyListener {
 		bgX = 0;
 		bgY = 0;
 		
-		uiHandler = new UiHandler(gc);
-		uiHandler.addElement(soundButton);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException{
@@ -214,7 +208,6 @@ public class BattleState extends BasicGameState implements KeyListener {
 			isIntro = !introManager.isPlayerReady();
 		}
 		
-		uiHandler.update();
 
 		
 		if(!gameOver && !isPaused){
